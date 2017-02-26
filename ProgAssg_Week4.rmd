@@ -1,0 +1,56 @@
+---
+title: "ProgAssg_Week4"
+author: "Sathish"
+date: "February 26, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##Background
+The World's Telephones
+
+###<b>Description</b>
+The number of telephones in various regions of the world (in thousands). The regions are: North America, Europe, Asia, South America, Oceania, Africa, Central America. The years are: 1951, 1956, 1957, 1958, 1959, 1960, 1961.
+
+###<b>Source</b>
+AT&T (1961) The World's Telephones.
+
+###<b>References</b>
+McNeil, D. R. (1977) Interactive Data Analysis. New York: Wiley.
+
+##Summary
+The App allows user to browse different regions (continents) and plots the number of phones (in thousands) vs. year and fits a best fit curve using "loess" method.
+
+##Server Code {.smaller}
+```{r echo = TRUE}
+# Load libraries
+suppressMessages(library(ggplot2))
+suppressMessages(library(reshape2))
+
+phoneplot <- function (region)
+{
+    # Make a narrow data set
+    WP <- melt(WorldPhones)
+    colnames(WP) <- c("Year","Region","Phones")
+    
+    # Select only rows for selected region
+    WP <- WP[which(WP$Region == region),]
+    
+    # Plot no. of phones vs. time for selected region
+    p <- ggplot(WP,aes(x=Year,y=Phones)) +
+        labs(x="Year",y="Number of Phones (in thousands)") + 
+        geom_point(size=4) + geom_smooth()
+    return(p)
+}
+```
+
+##Sample Plot {.smaller}
+```{r WorldPhones, echo = TRUE}
+phoneplot("Asia")
+```
+
+##Thank you
+
