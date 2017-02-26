@@ -8,3 +8,8 @@ This is a simple app that allows to browse different regions (continents) in the
 
 A best fit curve and confidence interval are calculated using "loess" method.
 
+### Application URL:
+https://sathishsankaran.shinyapps.io/ProgAssg_Week4/
+
+### Application Presentation:
+http://rpubs.com/sathish/253700
